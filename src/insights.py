@@ -1,3 +1,5 @@
+from typing import List
+from src.jobs import read as readData
 
 
 def get_unique_job_types(path):
@@ -15,7 +17,14 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    return []
+    result = readData(path)
+    resultJobType = []
+
+    for each_line in result:
+        if each_line["job_type"] != '':
+            resultJobType.append(each_line)
+            print(resultJobType)
+        return resultJobType
 
 
 def filter_by_job_type(jobs, job_type):
