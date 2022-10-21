@@ -17,13 +17,13 @@ def get_unique_job_types(path):
         List of unique job types
     """
     result = readData(path)
-    resultJobType = []
+    resultJobType = list()
 
     for each_line in result:
-        if each_line["job_type"] != '':
-            resultJobType.append(each_line)
-            print(resultJobType)
-        return resultJobType
+        if each_line["job_type"] != "":
+            resultJobType.append(each_line["job_type"])
+    JobTypeCorrect = list(set(resultJobType))
+    return JobTypeCorrect
 
 
 def filter_by_job_type(jobs, job_type):
@@ -108,6 +108,8 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
+    # result = readData(path)
+    # resultMaxSalary = []
     pass
 
 
