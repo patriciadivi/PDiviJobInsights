@@ -1,4 +1,3 @@
-from typing import List
 from src.jobs import read as readData
 
 
@@ -60,7 +59,20 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+
+    result = readData(path)
+    listIndustry = list()
+    # set = para tirar os valores repetidos
+    listIndustryNotDuplicates = set()
+
+    for each_line in result:
+        if each_line['industry'] != "":
+            listIndustry.append(each_line['industry'])
+
+    for each_element in listIndustry:
+        if each_element != "":
+            listIndustryNotDuplicates.add(each_element)
+    return listIndustryNotDuplicates
 
 
 def filter_by_industry(jobs, industry):
