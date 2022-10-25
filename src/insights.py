@@ -97,7 +97,11 @@ def filter_by_industry(jobs, industryParams):
     list
         List of jobs with provided industry
     """
-    resultIndustry = list(industry for industry in jobs if industry["industry"] == industryParams)
+    resultIndustry = list()
+
+    for industry in jobs:
+        if industry["industry"] == industryParams:
+            resultIndustry.append(industry)
     return resultIndustry
 
 
