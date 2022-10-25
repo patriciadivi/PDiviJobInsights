@@ -41,6 +41,12 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
+    # SEGUNDO EXEMPLO DE COMO RESOLVER
+    # resultJobType = list()
+
+    # for job in jobs:
+    #     if job["job_type"] == job_type:
+    #         resultJobType.append(job)
     resultJobType = list(job for job in jobs if job["job_type"] == job_type)
     return resultJobType
 
