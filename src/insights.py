@@ -108,6 +108,7 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
+    # Tentando
     result = readData(path)
     resultMaxSalary = list()
 
