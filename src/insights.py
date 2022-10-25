@@ -1,4 +1,3 @@
-from unittest import result
 from src.jobs import read as readData
 
 
@@ -43,7 +42,6 @@ def filter_by_job_type(jobs, job_type):
         List of jobs with provided job_type
     """
     resultJobType = list(job for job in jobs if job["job_type"] == job_type)
-    
     return resultJobType
 
 
