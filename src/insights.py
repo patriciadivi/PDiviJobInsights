@@ -1,3 +1,4 @@
+from unittest import result
 from src.jobs import read as readData
 
 
@@ -41,7 +42,9 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    resultJobType = list(job for job in jobs if job["job_type"] == job_type)
+    
+    return resultJobType
 
 
 def get_unique_industries(path):
