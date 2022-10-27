@@ -16,6 +16,7 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
+
     result = readData(path)
     resultJobType = list()
 
@@ -73,8 +74,8 @@ def get_unique_industries(path):
     listIndustryNotDuplicates = set()
 
     for each_line in result:
-        if each_line['industry'] != "":
-            listIndustry.append(each_line['industry'])
+        if each_line["industry"] != "":
+            listIndustry.append(each_line["industry"])
 
     for each_element in listIndustry:
         if each_element != "":
@@ -184,7 +185,22 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+
+    if "min_salary" not in job or "max_salary" not in job:
+        raise ValueError("You forgot to fill in 'min_salary or max_salary'")
+
+    elif (
+            type(job["min_salary"]) is not int
+            or type(job["max_salary"]) is not int
+    ):
+        raise ValueError(
+            "The 'min_salary or max_salary' fields are not numbers"
+        )
+    elif job["min_salary"] > job["max_salary"]:
+        raise ValueError("'min_salary' cannot be greater than 'max_salary'")
+    elif type(salary) is not int:
+        raise ValueError("The 'salary' field is not a number")
+    return job["min_salary"] <= salary <= job["max_salary"]
 
 
 def filter_by_salary_range(jobs, salary):
