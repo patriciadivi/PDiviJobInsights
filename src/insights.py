@@ -190,8 +190,8 @@ def matches_salary_range(job, salary):
         raise ValueError("You forgot to fill in 'min_salary or max_salary'")
 
     elif (
-            type(job["min_salary"]) is not int
-            or type(job["max_salary"]) is not int
+        type(job["min_salary"]) is not int
+        or type(job["max_salary"]) is not int
     ):
         raise ValueError(
             "The 'min_salary or max_salary' fields are not numbers"
@@ -218,4 +218,12 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    resultJobs = list()
+
+    for each_element in jobs:
+        try:
+            if matches_salary_range(each_element, salary):
+                resultJobs.append(each_element)
+        except ValueError:
+            print("This Value is invalid")
+    return resultJobs
